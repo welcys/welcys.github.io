@@ -6,16 +6,16 @@
   
   <title>1. 超简单的服务器 | Manifest the Meta-Cognition</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="一、代码讲解阅读完本文，你将学会如何从零开始，制作一个简易的cpp服务器。每个制作步骤中，当涉及到了一些常用的计算机知识，我会详细地去讲解，主打的就是一个通俗易懂。Thus， don’t be stressed, let’s get it !!! 1. 创建套接字12345int sockfd &#x3D; socket(AF_INET, SOCK_STREAM, 0);    if (sockfd&lt;">
+  <meta name="description" content="一、代码讲解阅读完本文，你将学会如何从零开始，制作一个简易的cpp服务器。每个制作步骤中，当涉及到了一些常用的计算机知识，我会详细地去讲解，主打的就是一个通俗易懂。Thus， don’t be stressed, let’s get it !!!">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1. 超简单的服务器">
 <meta property="og:url" content="http://example.com/2023/10/09/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/1%20a%20simple%20server/index.html">
 <meta property="og:site_name" content="Manifest the Meta-Cognition">
-<meta property="og:description" content="一、代码讲解阅读完本文，你将学会如何从零开始，制作一个简易的cpp服务器。每个制作步骤中，当涉及到了一些常用的计算机知识，我会详细地去讲解，主打的就是一个通俗易懂。Thus， don’t be stressed, let’s get it !!! 1. 创建套接字12345int sockfd &#x3D; socket(AF_INET, SOCK_STREAM, 0);    if (sockfd&lt;">
+<meta property="og:description" content="一、代码讲解阅读完本文，你将学会如何从零开始，制作一个简易的cpp服务器。每个制作步骤中，当涉及到了一些常用的计算机知识，我会详细地去讲解，主打的就是一个通俗易懂。Thus， don’t be stressed, let’s get it !!!">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/output.jpg">
 <meta property="article:published_time" content="2023-10-09T02:25:00.000Z">
-<meta property="article:modified_time" content="2023-10-09T02:25:54.060Z">
+<meta property="article:modified_time" content="2023-10-09T02:30:50.614Z">
 <meta property="article:author" content="Yusen Chen">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/output.jpg">
@@ -104,6 +104,9 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="一、代码讲解"><a href="#一、代码讲解" class="headerlink" title="一、代码讲解"></a>一、代码讲解</h2><p>阅读完本文，你将学会如何从零开始，制作一个简易的cpp服务器。每个制作步骤中，当涉及到了一些常用的计算机知识，我会详细地去讲解，主打的就是一个通俗易懂。Thus， don’t be stressed, let’s get it !!!</p>
+<span id="more"></span>
+
+
 <h3 id="1-创建套接字"><a href="#1-创建套接字" class="headerlink" title="1. 创建套接字"></a>1. 创建套接字</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> sockfd = <span class="built_in">socket</span>(AF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span> (sockfd&lt;<span class="number">0</span>)&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;socket error&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h4 id="套接字"><a href="#套接字" class="headerlink" title="套接字"></a>套接字</h4><p>套接字（Socket）可以被看作是计算机网络中的一个接口，它允许程序员创建可以进行网络通信的程序。你可以将套接字理解为电话插孔：你需要一个插孔（套接字）来将电话（计算机）连接到电话线（网络）上。</p>
 <p>在程序设计中，我们通常使用套接字来创建可以在网络上互相通信的两个程序。这两个程序可以是在同一台计算机上，也可以是在不同的计算机，甚至是在全球不同的地方。</p>
@@ -143,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/09/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/1%20a%20simple%20server/" data-id="clni9ykzp000e2lvvftxl1fw0" data-title="1. 超简单的服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/09/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/1%20a%20simple%20server/" data-id="clnia0kyx000343vvh4cyhvhm" data-title="1. 超简单的服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
