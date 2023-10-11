@@ -101,51 +101,15 @@
       
         <h2 id="假设空间"><a href="#假设空间" class="headerlink" title="假设空间"></a>假设空间</h2><p><strong>假设空间指的是输入空间到输出空间的映射关系的集合…</strong></p>
 <p>什么是映射？一种对应法则，一种定义，输入与输出之间的一种关系，同样也可以看作一种模型；同一个输入，不同的映射，得到不同的输出……<br>假设，就是对未知情况做一种主观的推理。</p>
-<p>举个例子，什么是一本好书，假如一本书有两个个特征，内容，流行。在我什么信息都没有的情况下，任何假设都是成立的，没有一个标准或者数据事实来告诉我什么是好书，所有假设组合起来的集合，就是假设空间；这种情况下，即使内容不好，也不流行的书，也有可能是好书。</p>
-<p>但是随着某个数据集出现，这个数据集告诉了我什么是好书，我就在我的假设空间里找哪些假设可以满足这个训练集合输入与输出的关系。我也许找到一个假设与之对应，也许好几个，不管一个还是几个，这些（这个）假设组成了该训练集的版本空间。</p>
-<h2 id="版本空间"><a href="#版本空间" class="headerlink" title="版本空间"></a>版本空间</h2><p>版本空间里的假设（法则，对应关系，模型），是一定能表达训练集的输入与输出之间的关系的，但是却不一定能正确表示新数据的输入输出关系…</p>
-<p>版本空间的假设可能不适用于新数据的观点，正是机器学习中“过拟合”（overfitting）的问题。当一个模型过于复杂，以至于完美地拟合了训练数据，但在新数据上表现不佳时，我们称这个模型过拟合了。</p>
-<h2 id="模型的归纳偏好"><a href="#模型的归纳偏好" class="headerlink" title="模型的归纳偏好"></a>模型的归纳偏好</h2><p>模型的归纳偏好 (Inductive Bias) 指的是当学习算法在面对多个与训练数据一致的假设时，它所倾向于选择的某一种假设。换句话说，归纳偏好决定了模型在多个可能的解决方案中偏好哪一个。</p>
-<p>假设我们正在试图使用机器学习预测一个房子的价格。我们选择了房子的面积和房间数量作为特征。现在，有两个模型或假设可以解释我们的训练数据：</p>
-<ol>
-<li><strong>假设 A</strong>：价格只与房子的面积有关。</li>
-<li><strong>假设 B</strong>：价格与房子的面积和房间数量都有关。</li>
-</ol>
-<p>在我们的训练数据中，假设A和假设B都可以很好地预测房价。也就是说，两个假设都与训练数据一致。</p>
-<p>但是，由于某种原因（例如我们使用的算法有某种归纳偏好），我们的机器学习算法更倾向于选择假设A，即它认为只有房子的面积对价格有影响，而房间数量不重要。</p>
-<p>这种偏好可能是由多种原因造成的，例如：</p>
-<ul>
-<li><strong>算法的简单性原则</strong>：算法可能倾向于更简单的模型（只有一个特征，而不是两个）。</li>
-<li><strong>正则化</strong>：如果我们使用了某种正则化技术，它可能会惩罚模型的复杂性，导致算法选择更简单的假设。</li>
-</ul>
-<p>所以，即使两个假设都与训练数据一致，机器学习算法可能会因为其归纳偏好而选择其中的一个。</p>
-<h3 id="奥卡姆剃刀"><a href="#奥卡姆剃刀" class="headerlink" title="奥卡姆剃刀"></a>奥卡姆剃刀</h3><p><strong>奥卡姆剃刀 (Occam’s Razor)</strong> 是一个哲学原则，它的基本思想是：在所有可能的解释中，最简单的解释通常是正确的。或者更加具体地说，当两个理论在其它方面都相等时，做出较少假设的那个理论更为优越。</p>
-<p>这个原则起源于14世纪的英国逻辑学家、神学家奥卡姆的威廉。他的观点是不应当在没有必要的情况下增加存在物的数量。</p>
-<p>在机器学习中，奥卡姆剃刀原则的意味着：</p>
-<ul>
-<li>当两个模型都能很好地解释数据时，我们应该选择更简单的那个。</li>
-<li>过于复杂的模型可能引入了不必要的特征或参数，这可能导致过拟合，即模型在训练数据上表现得很好，但在新的、未知数据上表现得很差。</li>
-</ul>
-<p>例如，考虑一个多项式回归问题，我们可以使用2阶、3阶、4阶等多项式来拟合数据。即使4阶多项式在训练数据上的误差最小，但如果2阶多项式的误差也足够小，根据奥卡姆剃刀原则，我们应该选择更简单的2阶多项式，因为它做出了较少的假设。</p>
-<p>简单来说，奥卡姆剃刀鼓励我们选择简单而优雅的解决方案，而不是复杂的解决方案，除非复杂性是真正必要的。</p>
-<h3 id="No-Free-Lunch-Theorem"><a href="#No-Free-Lunch-Theorem" class="headerlink" title="No Free Lunch Theorem"></a>No Free Lunch Theorem</h3><p>当然可以。这是机器学习理论中的一个非常有趣的结论，通常被称为“No Free Lunch Theorem”（没有免费的午餐定理）。简单来说，这个定理表明没有一个学习算法在所有可能的问题上都是最优的。</p>
-<p>为了简化讨论，我们考虑以下假设：</p>
-<ol>
-<li>存在一个问题空间，包含所有可能的问题。</li>
-<li>对于一个给定的算法 ( A )，对于每一个问题 ( p ) 在问题空间中，算法 ( A ) 都有一个错误率 ( E_A(p) )。</li>
-<li>如果有另一个算法 ( B )，它在某些问题上比 ( A ) 做得更好，那么必然存在其他问题，算法 ( B ) 做得更差。</li>
-</ol>
-<p>基于上述假设，我们可以说：  </p>
-<p>$$ [<br>\text{平均错误率} &#x3D; \frac{1}{\text{问题数量}} \sum_{p \in \text{问题空间}} E_A(p)<br>] $$</p>
-<p>由于问题空间对于所有算法都是相同的，所以对于任何两个算法 ( A ) 和 ( B )，它们的平均错误率是相同的，即：</p>
-<p>$$ [<br>\frac{1}{\text{问题数量}} \sum_{p \in \text{问题空间}} E_A(p) &#x3D; \frac{1}{\text{问题数量}} \sum_{p \in \text{问题空间}} E_B(p)<br>] $$</p>
-<p>这意味着，没有一个算法是普遍地“最好”的，因为它在某些问题上做得更好，必然会在其他问题上做得更差。这也解释了为什么在机器学习中，我们经常需要尝试多种算法来解决一个具体的问题，而不能盲目地认为某一个算法一定是最佳的。</p>
-<p>希望这个推导和解释对你有所帮助。有其他的问题吗？</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2023/10/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%A5%BF%E7%93%9C%E4%B9%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E7%BB%AA%E8%AE%BA/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%A5%BF%E7%93%9C%E4%B9%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E7%BB%AA%E8%AE%BA/" data-id="clnli3vm60000wwvv4qn458qu" data-title="第一章：绪论" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%A5%BF%E7%93%9C%E4%B9%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E7%BB%AA%E8%AE%BA/" data-id="clnli81yh0000yrvvb372carj" data-title="第一章：绪论" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -192,101 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/" data-id="clnli3vm80001wwvv1c1p20tw" data-title="C++随笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-项目/cpp/makeCppServer/2 多线程处理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/" class="article-date">
-  <time class="dt-published" datetime="2023-10-10T06:00:00.000Z" itemprop="datePublished">2023-10-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/cpp/">cpp</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/">makeCppServer</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/">2. 使用多线程处理客户端</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="本章内容"><a href="#本章内容" class="headerlink" title="本章内容"></a>本章内容</h2><p><strong>●线程的基础知识与创建线程</strong><br><strong>●线程同步：锁、条件变量、信号量介绍</strong><br><strong>●实践：使用多线程处理客户端连接</strong>  </p>
-        
-          <p class="article-more-link">
-            <a href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/" data-id="clnli3vm90003wwvvbyxn67n5" data-title="2. 使用多线程处理客户端" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-计算机基础/计算机操作系统/6.S081/lec2 C in xv6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/" class="article-date">
-  <time class="dt-published" datetime="2023-10-08T04:00:00.000Z" itemprop="datePublished">2023-10-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>►<a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a>►<a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6-S081/">6.S081</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/">Lecture 2: C</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="按位运算符"><a href="#按位运算符" class="headerlink" title="按位运算符"></a>按位运算符</h2><h3 id="位与操作"><a href="#位与操作" class="headerlink" title="位与操作 &amp;"></a>位与操作 &amp;</h3><p>当两个位都为1时，结果才为1；否则为0。</p>
-        
-          <p class="article-more-link">
-            <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/" data-id="clnli3vma0004wwvvh8rs0r4y" data-title="Lecture 2: C" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/" data-id="clnli81yj0001yrvvg2hna9w9" data-title="C++随笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -334,7 +204,54 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/Lec1/" data-id="clnli3vma0005wwvv9q3kgynh" data-title="Lecture 1: Introduction" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/Lec1/" data-id="clnli81yk0003yrvvhop6a7ke" data-title="Lecture 1: Introduction" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计算机基础/计算机操作系统/6.S081/lec2 C in xv6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/" class="article-date">
+  <time class="dt-published" datetime="2023-10-08T04:00:00.000Z" itemprop="datePublished">2023-10-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>►<a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a>►<a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6-S081/">6.S081</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/">Lecture 2: C</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="按位运算符"><a href="#按位运算符" class="headerlink" title="按位运算符"></a>按位运算符</h2><h3 id="位与操作"><a href="#位与操作" class="headerlink" title="位与操作 &amp;"></a>位与操作 &amp;</h3><p>当两个位都为1时，结果才为1；否则为0。</p>
+        
+          <p class="article-more-link">
+            <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/" data-id="clnli81yk0004yrvv6bvfbtbm" data-title="Lecture 2: C" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -381,7 +298,54 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/09/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/1%20a%20simple%20server/" data-id="clnli3vma0007wwvvaiy41jvl" data-title="1. 超简单的服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/09/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/1%20a%20simple%20server/" data-id="clnli81yl0005yrvvezef0aaz" data-title="1. 超简单的服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-项目/cpp/makeCppServer/2 多线程处理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2023-10-10T06:00:00.000Z" itemprop="datePublished">2023-10-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/cpp/">cpp</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/">makeCppServer</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/">2. 使用多线程处理客户端</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="本章内容"><a href="#本章内容" class="headerlink" title="本章内容"></a>本章内容</h2><p><strong>●线程的基础知识与创建线程</strong><br><strong>●线程同步：锁、条件变量、信号量介绍</strong><br><strong>●实践：使用多线程处理客户端连接</strong>  </p>
+        
+          <p class="article-more-link">
+            <a href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/" data-id="clnli81yo000xyrvvc3ev3qb8" data-title="2. 使用多线程处理客户端" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       

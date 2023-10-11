@@ -6,15 +6,15 @@
   
   <title>第一章：绪论 | Welch的成长笔录</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="假设空间假设空间指的是输入空间到输出空间的映射关系的集合… 什么是映射？一种对应法则，一种定义，输入与输出之间的一种关系，同样也可以看作一种模型；同一个输入，不同的映射，得到不同的输出……假设，就是对未知情况做一种主观的推理。 举个例子，什么是一本好书，假如一本书有两个个特征，内容，流行。在我什么信息都没有的情况下，任何假设都是成立的，没有一个标准或者数据事实来告诉我什么是好书，所有假设组合起来的">
+  <meta name="description" content="假设空间假设空间指的是输入空间到输出空间的映射关系的集合… 什么是映射？一种对应法则，一种定义，输入与输出之间的一种关系，同样也可以看作一种模型；同一个输入，不同的映射，得到不同的输出……假设，就是对未知情况做一种主观的推理。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第一章：绪论">
 <meta property="og:url" content="http://example.com/2023/10/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%A5%BF%E7%93%9C%E4%B9%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E7%BB%AA%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Welch的成长笔录">
-<meta property="og:description" content="假设空间假设空间指的是输入空间到输出空间的映射关系的集合… 什么是映射？一种对应法则，一种定义，输入与输出之间的一种关系，同样也可以看作一种模型；同一个输入，不同的映射，得到不同的输出……假设，就是对未知情况做一种主观的推理。 举个例子，什么是一本好书，假如一本书有两个个特征，内容，流行。在我什么信息都没有的情况下，任何假设都是成立的，没有一个标准或者数据事实来告诉我什么是好书，所有假设组合起来的">
+<meta property="og:description" content="假设空间假设空间指的是输入空间到输出空间的映射关系的集合… 什么是映射？一种对应法则，一种定义，输入与输出之间的一种关系，同样也可以看作一种模型；同一个输入，不同的映射，得到不同的输出……假设，就是对未知情况做一种主观的推理。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-10-11T07:53:00.000Z">
-<meta property="article:modified_time" content="2023-10-11T08:29:26.449Z">
+<meta property="article:modified_time" content="2023-10-11T08:40:39.122Z">
 <meta property="article:author" content="Yusen Chen">
 <meta name="twitter:card" content="summary">
   
@@ -103,6 +103,8 @@
       
         <h2 id="假设空间"><a href="#假设空间" class="headerlink" title="假设空间"></a>假设空间</h2><p><strong>假设空间指的是输入空间到输出空间的映射关系的集合…</strong></p>
 <p>什么是映射？一种对应法则，一种定义，输入与输出之间的一种关系，同样也可以看作一种模型；同一个输入，不同的映射，得到不同的输出……<br>假设，就是对未知情况做一种主观的推理。</p>
+<span id="more"></span>
+
 <p>举个例子，什么是一本好书，假如一本书有两个个特征，内容，流行。在我什么信息都没有的情况下，任何假设都是成立的，没有一个标准或者数据事实来告诉我什么是好书，所有假设组合起来的集合，就是假设空间；这种情况下，即使内容不好，也不流行的书，也有可能是好书。</p>
 <p>但是随着某个数据集出现，这个数据集告诉了我什么是好书，我就在我的假设空间里找哪些假设可以满足这个训练集合输入与输出的关系。我也许找到一个假设与之对应，也许好几个，不管一个还是几个，这些（这个）假设组成了该训练集的版本空间。</p>
 <h2 id="版本空间"><a href="#版本空间" class="headerlink" title="版本空间"></a>版本空间</h2><p>版本空间里的假设（法则，对应关系，模型），是一定能表达训练集的输入与输出之间的关系的，但是却不一定能正确表示新数据的输入输出关系…</p>
@@ -137,17 +139,15 @@
 <li>对于一个给定的算法 ( A )，对于每一个问题 ( p ) 在问题空间中，算法 ( A ) 都有一个错误率 ( E_A(p) )。</li>
 <li>如果有另一个算法 ( B )，它在某些问题上比 ( A ) 做得更好，那么必然存在其他问题，算法 ( B ) 做得更差。</li>
 </ol>
-<p>基于上述假设，我们可以说：  </p>
-<p>$$ [<br>\text{平均错误率} &#x3D; \frac{1}{\text{问题数量}} \sum_{p \in \text{问题空间}} E_A(p)<br>] $$</p>
+<p>基于上述假设，我们可以说：<br>$$ \text{平均错误率} &#x3D; \frac{1}{\text{问题数量}} \sum_{p \in \text{问题空间}} E_A(p) $$</p>
 <p>由于问题空间对于所有算法都是相同的，所以对于任何两个算法 ( A ) 和 ( B )，它们的平均错误率是相同的，即：</p>
-<p>$$ [<br>\frac{1}{\text{问题数量}} \sum_{p \in \text{问题空间}} E_A(p) &#x3D; \frac{1}{\text{问题数量}} \sum_{p \in \text{问题空间}} E_B(p)<br>] $$</p>
+<p>对于任何两个算法 ( A ) 和 ( B )，它们的平均错误率是相同的：<br>$$ \frac{1}{\text{问题数量}} \sum_{p \in \text{问题空间}} E_A(p) &#x3D; \frac{1}{\text{问题数量}} \sum_{p \in \text{问题空间}} E_B(p) $$</p>
 <p>这意味着，没有一个算法是普遍地“最好”的，因为它在某些问题上做得更好，必然会在其他问题上做得更差。这也解释了为什么在机器学习中，我们经常需要尝试多种算法来解决一个具体的问题，而不能盲目地认为某一个算法一定是最佳的。</p>
-<p>希望这个推导和解释对你有所帮助。有其他的问题吗？</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%A5%BF%E7%93%9C%E4%B9%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E7%BB%AA%E8%AE%BA/" data-id="clnli3vm60000wwvv4qn458qu" data-title="第一章：绪论" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%A5%BF%E7%93%9C%E4%B9%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E7%BB%AA%E8%AE%BA/" data-id="clnli81yh0000yrvvb372carj" data-title="第一章：绪论" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
