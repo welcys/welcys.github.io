@@ -14,7 +14,7 @@
 <meta property="og:description" content="这里的知识没有归类和排序，只适用于查找某个特定的知识点，不适合拿来系统学习C++！">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-10-11T03:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-11T03:09:32.439Z">
+<meta property="article:modified_time" content="2023-10-11T06:59:08.205Z">
 <meta property="article:author" content="Yusen Chen">
 <meta name="twitter:card" content="summary">
   
@@ -149,11 +149,51 @@
 </ol>
 <p>最终，选择结构体还是类更多地取决于你的设计意图和个人或团队的编码风格。在 C++ 中，由于结构体和类的功能几乎相同，因此二者可以互换使用，只要它们在语义上是合理的。</p>
 <hr>
+<h1 id="p-这里的运算顺序是什么？"><a href="#p-这里的运算顺序是什么？" class="headerlink" title="*p++; 这里的运算顺序是什么？"></a>*p++; 这里的运算顺序是什么？</h1><p>在表达式 <code>*p++</code> 中，运算的顺序取决于运算符的优先级和结合性。在这个例子中，我们有两个运算符：后置 <code>++</code>（递增）运算符和 <code>*</code>（解引用）运算符。</p>
+<p>后置 <code>++</code> 运算符的优先级高于 <code>*</code> 运算符，因此它会先执行。</p>
+<p>但是，尽管后置 <code>++</code> 的优先级更高，它的效果（即增加 <code>p</code> 的值）是在整个表达式计算完之后才发生的。因此，<code>*p++</code> 的效果是先解引用 <code>p</code>，然后再递增 <code>p</code>。</p>
+<p>这是一个例子：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>&#125;;</span><br><span class="line"><span class="type">int</span> *p = arr;</span><br><span class="line">cout &lt;&lt; *p++ &lt;&lt; endl; <span class="comment">// 输出 10</span></span><br><span class="line">cout &lt;&lt; *p &lt;&lt; endl;   <span class="comment">// 输出 20</span></span><br></pre></td></tr></table></figure>
+
+<p>在第一个 <code>cout</code> 语句中，<code>*p++</code> 先解引用 <code>p</code>（得到 <code>arr[0]</code>，也就是 <code>10</code>），然后再递增 <code>p</code>（使 <code>p</code> 指向 <code>arr[1]</code>）。在第二个 <code>cout</code> 语句中，<code>*p</code> 解引用 <code>p</code>，得到 <code>arr[1]</code>，也就是 <code>20</code>。</p>
+<hr>
+<h1 id="数组形参"><a href="#数组形参" class="headerlink" title="数组形参"></a>数组形参</h1><p>你提到的确实是一个很重要的话题。在 C++ 中，当我们在函数中使用数组作为参数时，实际上是传递数组的指针，而不是整个数组。这意味着：</p>
+<ol>
+<li>函数内部无法确定数组的大小，除非我们以其他方式传递这个信息。</li>
+<li>由于传递的是数组的指针，函数内部对数组的修改会影响到原始数组。</li>
+</ol>
+<p>让我们通过一些示例进行深入探讨。</p>
+<p><strong>例子 1</strong>：一个简单的函数，它接受一个整数数组和数组的大小作为参数，并打印数组的内容。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printArray</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> size)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; arr[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> values[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="built_in">printArray</span>(values, <span class="number">5</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的例子中，<code>printArray</code> 函数的参数 <code>arr</code> 实际上是一个指向数组首元素的指针。我们还需要传递数组的大小，以便知道应该打印多少元素。</p>
+<p><strong>例子 2</strong></p>
+<p>考虑以下例子，其中我们使用数组引用作为函数参数，并通过 <code>sizeof</code> 操作符来获取数组的大小：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printArray</span><span class="params">(<span class="type">const</span> <span class="type">int</span> (&amp;arr)[<span class="number">5</span>])</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> size = <span class="built_in">sizeof</span>(arr) / <span class="built_in">sizeof</span>(arr[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">        std::cout &lt;&lt; arr[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> values[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="built_in">printArray</span>(values);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>printArray</code> 函数接受一个大小为 5 的整数数组的引用。我们使用 <code>sizeof</code> 操作符来计算数组的大小，并通过这个大小来遍历和打印数组。</p>
+<p>这种方法的限制是函数只能接受特定大小的数组作为参数。在上述例子中，函数只接受大小为 5 的数组。如果你想让它接受不同大小的数组，你需要为每个大小都写一个重载版本的函数。</p>
+<p>总的来说，当在 C++ 中使用数组作为函数参数时，应该记住实际传递的是数组的地址，并确保你知道如何确定数组的大小，以及在需要时如何避免修改原始数组。</p>
+<h3 id="Vector更好"><a href="#Vector更好" class="headerlink" title="Vector更好"></a>Vector更好</h3><p>在实际的 C++ 开发中，<code>std::vector</code> 是非常受欢迎的选择，尤其当你不确定数据的数量或需要灵活性时。使用 <code>std::vector</code> 有以下几个好处：</p>
+<ol>
+<li><strong>动态大小</strong>：与数组不同，<code>std::vector</code> 可以在运行时动态地改变大小。</li>
+<li><strong>容易传递</strong>：你可以轻松地将整个 <code>std::vector</code> 或其引用传递给函数。</li>
+<li><strong>内置功能</strong>：<code>std::vector</code> 提供了许多有用的内置函数，如 <code>push_back()</code>, <code>size()</code>, <code>begin()</code>, <code>end()</code> 等。</li>
+<li><strong>安全性</strong>：与裸数组相比，使用 <code>std::vector</code> 更容易避免诸如越界访问之类的错误。</li>
+</ol>
+<p>在函数中，如果你不打算修改 <code>vector</code> 的内容，最好传递 <code>const</code> 引用，例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printVector</span><span class="params">(<span class="type">const</span> std::vector&lt;<span class="type">int</span>&gt;&amp; vec)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; val : vec) &#123;</span><br><span class="line">        std::cout &lt;&lt; val &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果你打算在函数内修改 <code>vector</code>，则可以传递一个普通的引用：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">modifyVector</span><span class="params">(std::vector&lt;<span class="type">int</span>&gt;&amp; vec)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; val : vec) &#123;</span><br><span class="line">        val *= <span class="number">2</span>; <span class="comment">// 例如，将每个元素翻倍</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<hr>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/" data-id="clnl6a2b60000wsvv2484e56i" data-title="C++随笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/" data-id="clnlhqf9j0003rbvvbk8jewcr" data-title="C++随笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
