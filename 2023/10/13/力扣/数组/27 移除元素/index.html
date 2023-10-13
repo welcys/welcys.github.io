@@ -14,7 +14,7 @@
 <meta property="og:description" content="题干力扣链接 思路 双指针技巧：使用两个指针，一个快指针 fast 和一个慢指针 slow。fast 用于遍历整个数组，而 slow 用于指示新数组的位置。 当 fast 指向的元素不等于给定的 val 时，我们将该元素复制到 slow 指向的位置，并将 slow 向前移动一步。 无论 fast 指向的元素的值如何，我们都将 fast 向前移动一步。 当 fast 遍历完整个数组后，slow 的位">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-10-13T06:30:00.000Z">
-<meta property="article:modified_time" content="2023-10-13T06:38:00.067Z">
+<meta property="article:modified_time" content="2023-10-13T06:39:58.091Z">
 <meta property="article:author" content="Yusen Chen">
 <meta property="article:tag" content="双指针法">
 <meta name="twitter:card" content="summary">
@@ -123,12 +123,11 @@
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(std::vector&lt;<span class="type">int</span>&gt;&amp; v, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> slow = <span class="number">0</span>;  <span class="comment">// 初始化慢指针</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> fast = <span class="number">0</span>; fast &lt; v.<span class="built_in">size</span>(); fast++) &#123;  <span class="comment">// 使用快指针遍历数组</span></span><br><span class="line">            <span class="keyword">if</span> (v[fast] != val) &#123;  <span class="comment">// 如果快指针指向的元素不等于 val</span></span><br><span class="line">                v[slow] = v[fast];  <span class="comment">// 将该元素复制到慢指针的位置</span></span><br><span class="line">                ++slow;  <span class="comment">// 将慢指针向前移动一步</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;  <span class="comment">// 返回新数组的长度</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<p>希望这个总结对你有帮助！如果你有其他问题或需要进一步的解释，请告诉我。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-id="clno8m5980001s2vv7uazh2wz" data-title="27.移除元素" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-id="clno8odsz0000u1vv1t0tgl4n" data-title="27.移除元素" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
