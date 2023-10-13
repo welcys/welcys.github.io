@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Category: 计算机网络 | Welch的成长笔录</title>
+  <title>27.移除元素 | Welch的成长笔录</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Welch的成长笔录">
-<meta property="og:url" content="http://example.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
+  <meta name="description" content="题干力扣链接 思路 双指针技巧：使用两个指针，一个快指针 fast 和一个慢指针 slow。fast 用于遍历整个数组，而 slow 用于指示新数组的位置。 当 fast 指向的元素不等于给定的 val 时，我们将该元素复制到 slow 指向的位置，并将 slow 向前移动一步。 无论 fast 指向的元素的值如何，我们都将 fast 向前移动一步。 当 fast 遍历完整个数组后，slow 的位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="27.移除元素">
+<meta property="og:url" content="http://example.com/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/index.html">
 <meta property="og:site_name" content="Welch的成长笔录">
+<meta property="og:description" content="题干力扣链接 思路 双指针技巧：使用两个指针，一个快指针 fast 和一个慢指针 slow。fast 用于遍历整个数组，而 slow 用于指示新数组的位置。 当 fast 指向的元素不等于给定的 val 时，我们将该元素复制到 slow 指向的位置，并将 slow 向前移动一步。 无论 fast 指向的元素的值如何，我们都将 fast 向前移动一步。 当 fast 遍历完整个数组后，slow 的位">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-13T06:30:00.000Z">
+<meta property="article:modified_time" content="2023-10-13T06:38:00.067Z">
 <meta property="article:author" content="Yusen Chen">
+<meta property="article:tag" content="双指针法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Welch的成长笔录" type="application/atom+xml">
@@ -82,39 +87,69 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/" class="archive-article-date">
-  <time class="dt-published" datetime="2023-10-08T04:00:00.000Z" itemprop="datePublished">Oct 8</time>
+        <section id="main"><article id="post-力扣/数组/27 移除元素" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" class="article-date">
+  <time class="dt-published" datetime="2023-10-13T06:30:00.000Z" itemprop="datePublished">2023-10-13</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/">数组</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/">第1章：绪论</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      27.移除元素
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="题干"><a href="#题干" class="headerlink" title="题干"></a>题干</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-element/">力扣链接</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
+<li><strong>双指针技巧</strong>：使用两个指针，一个快指针 <code>fast</code> 和一个慢指针 <code>slow</code>。<code>fast</code> 用于遍历整个数组，而 <code>slow</code> 用于指示新数组的位置。</li>
+<li>当 <code>fast</code> 指向的元素不等于给定的 <code>val</code> 时，我们将该元素复制到 <code>slow</code> 指向的位置，并将 <code>slow</code> 向前移动一步。</li>
+<li>无论 <code>fast</code> 指向的元素的值如何，我们都将 <code>fast</code> 向前移动一步。</li>
+<li>当 <code>fast</code> 遍历完整个数组后，<code>slow</code> 的位置就是新数组的长度。</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(std::vector&lt;<span class="type">int</span>&gt;&amp; v, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> slow = <span class="number">0</span>;  <span class="comment">// 初始化慢指针</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> fast = <span class="number">0</span>; fast &lt; v.<span class="built_in">size</span>(); fast++) &#123;  <span class="comment">// 使用快指针遍历数组</span></span><br><span class="line">            <span class="keyword">if</span> (v[fast] != val) &#123;  <span class="comment">// 如果快指针指向的元素不等于 val</span></span><br><span class="line">                v[slow] = v[fast];  <span class="comment">// 将该元素复制到慢指针的位置</span></span><br><span class="line">                ++slow;  <span class="comment">// 将慢指针向前移动一步</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;  <span class="comment">// 返回新数组的长度</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>希望这个总结对你有帮助！如果你有其他问题或需要进一步的解释，请告诉我。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-id="clno8m5980001s2vv7uazh2wz" data-title="27.移除元素" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95/" rel="tag">双指针法</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/10/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%A5%BF%E7%93%9C%E4%B9%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E7%BB%AA%E8%AE%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">第一章：绪论</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
