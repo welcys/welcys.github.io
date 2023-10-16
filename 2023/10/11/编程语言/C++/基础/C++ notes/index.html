@@ -14,7 +14,7 @@
 <meta property="og:description" content="这里的知识没有归类和排序，只适用于查找某个特定的知识点，不适合拿来系统学习C++！">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-10-11T03:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-11T06:59:08.205Z">
+<meta property="article:modified_time" content="2023-10-16T06:32:58.876Z">
 <meta property="article:author" content="Yusen Chen">
 <meta name="twitter:card" content="summary">
   
@@ -200,11 +200,27 @@
 
 
 <hr>
+<h2 id="explicit-关键字"><a href="#explicit-关键字" class="headerlink" title="explicit 关键字"></a><strong><code>explicit</code> 关键字</strong></h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a><strong>定义</strong></h3><p><code>explicit</code> 是一个C++关键字，用于防止构造函数或转换运算符的隐式调用。</p>
+<h3 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a><strong>隐式转换</strong></h3><p>当C++允许从类型A自动转换到类型B（不需要明确指定转换）时，称之为隐式转换。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> i = <span class="number">42</span>;</span><br><span class="line"><span class="type">double</span> d = i; <span class="comment">// 隐式转换</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="为什么要防止隐式转换"><a href="#为什么要防止隐式转换" class="headerlink" title="为什么要防止隐式转换"></a><strong>为什么要防止隐式转换</strong></h3><ol>
+<li><strong>性能问题</strong>：隐式转换可能会频繁地创建临时对象，导致性能下降。</li>
+<li><strong>可读性问题</strong>：隐式转换可能会使代码难以阅读和理解。</li>
+<li><strong>意外的行为</strong>：隐式转换可能会导致意外的或不期望的行为。</li>
+<li><strong>错误难以检测</strong>：隐式转换可能会导致难以发现的错误。</li>
+</ol>
+<h3 id="何时考虑允许隐式转换"><a href="#何时考虑允许隐式转换" class="headerlink" title="何时考虑允许隐式转换"></a><strong>何时考虑允许隐式转换</strong></h3><ol>
+<li><strong>自然且无歧义的转换</strong>：如从 <code>float</code> 到 <code>double</code> 的转换。</li>
+<li><strong>API的易用性</strong>：为了使API更加易用。</li>
+</ol>
+<hr>
+<p>希望这份笔记对你有所帮助！有其他需要吗？</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/" data-id="clno8pauy0019vfvv4urx8vrg" data-title="C++随笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/" data-id="clnsq3ahg000c2dvva31bh366" data-title="C++随笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -285,6 +301,10 @@
       <ul>
         
           <li>
+            <a href="/2023/10/16/%E5%8A%9B%E6%89%A3/%E4%BA%8C%E5%8F%89%E6%A0%91/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/">27.移除元素</a>
           </li>
         
@@ -298,10 +318,6 @@
         
           <li>
             <a href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/">2. 使用多线程处理客户端</a>
-          </li>
-        
-          <li>
-            <a href="/2023/10/09/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/1%20a%20simple%20server/">1. 超简单的服务器</a>
           </li>
         
       </ul>

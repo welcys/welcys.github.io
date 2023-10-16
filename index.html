@@ -119,12 +119,97 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-id="clno8pauq0000vfvvcdsm53o5" data-title="27.移除元素" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-id="clnsq3ahb00002dvv8xjybsy8" data-title="27.移除元素" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95/" rel="tag">双指针法</a></li></ul>
 
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-力扣/二叉树/二叉树基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/16/%E5%8A%9B%E6%89%A3/%E4%BA%8C%E5%8F%89%E6%A0%91/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2023-10-16T07:03:29.759Z" itemprop="datePublished">2023-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="常见的概念"><a href="#常见的概念" class="headerlink" title="常见的概念"></a>常见的概念</h1><h2 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h2><p>在完全二叉树中，除了最后一层外，其他层的节点都是满的，并且最后一层的节点都尽可能地靠左排列。简单来说，完全二叉树是一棵高度为h的二叉树，除了最后一层外，其他层的节点都是满的，最后一层的节点从左到右连续排列。</p>
+<h3 id="如何判断"><a href="#如何判断" class="headerlink" title="如何判断"></a>如何判断</h3><p>当给出一张二叉树的图时，你可以按照以下步骤来判断它是否是完全二叉树：</p>
+<ol>
+<li><p>从根节点开始，按照从上到下、从左到右的顺序遍历二叉树的节点。</p>
+</li>
+<li><p>在遍历过程中，观察每个节点的子节点情况：</p>
+<ul>
+<li>如果一个节点没有左子节点但有右子节点，那么它不是完全二叉树。</li>
+<li>如果一个节点有左子节点但没有右子节点，并且后面还有任何节点，那么它不是完全二叉树。</li>
+</ul>
+</li>
+<li><p>如果遍历过程中没有违反上述两个条件，且遍历结束后所有节点都被访问到，则该二叉树是完全二叉树。</p>
+</li>
+</ol>
+<p>【例子】</p>
+<p>好的，让我们根据完全二叉树的定义来判断这三个例子：</p>
+<ol>
+<li><code>[1, 2, 3, 4, 5, 6, 7]</code> 描述的二叉树：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">   / \</span><br><span class="line">  2   3</span><br><span class="line"> / \ / \</span><br><span class="line">4  5 6  7</span><br></pre></td></tr></table></figure>
+<p>这个二叉树除了最底层外，其它层的节点都达到最大，且最底层也是满的，从左到右连续，没有空位。所以，这是一个完全二叉树。</p>
+<ol start="2">
+<li><code>[1, 2, 3, 4, 5, null, 7]</code> 描述的二叉树：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">   / \</span><br><span class="line">  2   3</span><br><span class="line"> / \   \</span><br><span class="line">4   5   7</span><br></pre></td></tr></table></figure>
+<p>在这个二叉树中，最底层的节点没有从左到右连续，有一个空位。所以，这不是一个完全二叉树。</p>
+<ol start="3">
+<li><code>[1, 2, 3, 4, 5, null, null]</code> 描述的二叉树：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">   / \</span><br><span class="line">  2   3</span><br><span class="line"> / \</span><br><span class="line">4   5</span><br></pre></td></tr></table></figure>
+<p>这个二叉树除了最底层外，其它层的节点都达到最大，且最底层从左到右连续，没有空位。所以，这是一个完全二叉树。</p>
+<p>总结一下：第一个和第三个二叉树是完全二叉树，第二个二叉树不是完全二叉树。</p>
+<h2 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h2><p>在一个满二叉树中，所有的节点都具有0个或2个子节点，不存在只有一个子节点的节点。每一层的节点数量都达到了最大值。</p>
+<p>以下是一棵深度为3的满二叉树的文本表示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">       1</span><br><span class="line">     /   \</span><br><span class="line">   2       3</span><br><span class="line"> /  \     /  \</span><br><span class="line">4    5   6    7</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，根节点是1，它有两个子节点2和3。同样，节点2和3各自也有两个子节点。没有任何节点只有一个子节点。所以这是一棵满二叉树。</p>
+<h2 id="深度和高度"><a href="#深度和高度" class="headerlink" title="深度和高度"></a>深度和高度</h2><p>当然可以！</p>
+<p>首先，我们来定义<strong>深度</strong>和<strong>高度</strong>：</p>
+<ul>
+<li><strong>深度</strong>：一个节点的深度是从根节点到该节点的唯一路径上的边数。根节点的深度为0。</li>
+<li><strong>高度</strong>：一个节点的高度是从该节点到最深叶子节点的最长路径上的边数。叶子节点的高度为0。</li>
+</ul>
+<p>对于整棵树：</p>
+<ul>
+<li>树的<strong>深度</strong>：通常指的是根节点的深度，总是为0。</li>
+<li>树的<strong>高度</strong>：指的是根节点的高度，也就是从根节点到最深叶子节点的最长路径上的边数。</li>
+</ul>
+<p>现在，让我们通过一个示意图来理解这些概念：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">     A (深度=0, 高度=2)</span><br><span class="line">    / \</span><br><span class="line">   /   \</span><br><span class="line">  B     C (深度=1, 高度=1)</span><br><span class="line"> / \   / \</span><br><span class="line">D   E F   G (深度=2, 高度=0)</span><br></pre></td></tr></table></figure>
+
+<p>在上面的二叉树中：</p>
+<ul>
+<li>节点A的深度为0（因为它是根节点），高度为2（从A到最深的叶子节点D、E、F或G的边数）。</li>
+<li>节点B和C的深度为1，高度为1。</li>
+<li>节点D、E、F和G的深度为2，高度为0（因为它们都是叶子节点）。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/16/%E5%8A%9B%E6%89%A3/%E4%BA%8C%E5%8F%89%E6%A0%91/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80/" data-id="clnsq3ahd00012dvv7w2032x4" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
     </footer>
   </div>
   
@@ -169,55 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%A5%BF%E7%93%9C%E4%B9%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E7%BB%AA%E8%AE%BA/" data-id="clno8paus0001vfvv7t49anix" data-title="第一章：绪论" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-计算机基础/计算机网络/计算机网络自顶向下" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/" class="article-date">
-  <time class="dt-published" datetime="2023-10-08T04:00:00.000Z" itemprop="datePublished">2023-10-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>►<a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/">第1章：绪论</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>这里开始是你的文章内容…</p>
-<h1 id="1-1什么是英特网"><a href="#1-1什么是英特网" class="headerlink" title="1.1什么是英特网"></a>1.1什么是英特网</h1><h2 id="具体构成描述"><a href="#具体构成描述" class="headerlink" title="具体构成描述"></a>具体构成描述</h2><h3 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h3><h4 id="什么是路由器"><a href="#什么是路由器" class="headerlink" title="什么是路由器"></a>什么是路由器</h4><p>路由器是计算机网络中的一种设备，它的主要功能是接收、处理和转发网络中的数据包。你可以将路由器比作邮政系统中的邮递员。邮递员负责将邮件从一个地方转移到另一个地方，路由器在网络中的角色也是类似的。</p>
-        
-          <p class="article-more-link">
-            <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/" data-id="clno8paut0004vfvv7992do40" data-title="第1章：绪论" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%A5%BF%E7%93%9C%E4%B9%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E7%BB%AA%E8%AE%BA/" data-id="clnsq3ahf00042dvv3y7p3dj0" data-title="第一章：绪论" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -264,7 +301,195 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/09/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/1%20a%20simple%20server/" data-id="clno8pauu0005vfvv1idw7cix" data-title="1. 超简单的服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/09/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/1%20a%20simple%20server/" data-id="clnsq3ahf00052dvvfaoohdiw" data-title="1. 超简单的服务器" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-项目/cpp/makeCppServer/2 多线程处理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/" class="article-date">
+  <time class="dt-published" datetime="2023-10-10T06:00:00.000Z" itemprop="datePublished">2023-10-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/cpp/">cpp</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/">makeCppServer</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/">2. 使用多线程处理客户端</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="本章内容"><a href="#本章内容" class="headerlink" title="本章内容"></a>本章内容</h2><p><strong>●线程的基础知识与创建线程</strong><br><strong>●线程同步：锁、条件变量、信号量介绍</strong><br><strong>●实践：使用多线程处理客户端连接</strong>  </p>
+        
+          <p class="article-more-link">
+            <a href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/" data-id="clnsq3ahf00062dvv9sgh2d3c" data-title="2. 使用多线程处理客户端" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计算机基础/计算机操作系统/6.S081/lec2 C in xv6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/" class="article-date">
+  <time class="dt-published" datetime="2023-10-08T04:00:00.000Z" itemprop="datePublished">2023-10-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>►<a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a>►<a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6-S081/">6.S081</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/">Lecture 2: C</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="按位运算符"><a href="#按位运算符" class="headerlink" title="按位运算符"></a>按位运算符</h2><h3 id="位与操作"><a href="#位与操作" class="headerlink" title="位与操作 &amp;"></a>位与操作 &amp;</h3><p>当两个位都为1时，结果才为1；否则为0。</p>
+        
+          <p class="article-more-link">
+            <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/" data-id="clnsq3ahg00092dvv5t722mvl" data-title="Lecture 2: C" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-计算机基础/计算机网络/计算机网络自顶向下" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/" class="article-date">
+  <time class="dt-published" datetime="2023-10-08T04:00:00.000Z" itemprop="datePublished">2023-10-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>►<a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/">第1章：绪论</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="1-1什么是英特网"><a href="#1-1什么是英特网" class="headerlink" title="1.1什么是英特网"></a>1.1什么是英特网</h1><h2 id="具体构成描述"><a href="#具体构成描述" class="headerlink" title="具体构成描述"></a>具体构成描述</h2><h3 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h3><h4 id="什么是路由器"><a href="#什么是路由器" class="headerlink" title="什么是路由器"></a>什么是路由器</h4><p>路由器是计算机网络中的一种设备，它的主要功能是接收、处理和转发网络中的数据包。你可以将路由器比作邮政系统中的邮递员。邮递员负责将邮件从一个地方转移到另一个地方，路由器在网络中的角色也是类似的。</p>
+        
+          <p class="article-more-link">
+            <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/" data-id="clnsq3ahg000a2dvvb5awbmar" data-title="第1章：绪论" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-编程语言/C++/基础/C++ notes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/" class="article-date">
+  <time class="dt-published" datetime="2023-10-11T03:00:00.000Z" itemprop="datePublished">2023-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>►<a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C++</a>►<a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">基础语法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/">C++随笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>这里的知识没有归类和排序，只适用于查找某个特定的知识点，不适合拿来系统学习C++！</p>
+        
+          <p class="article-more-link">
+            <a href="/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/" data-id="clnsq3ahg000c2dvva31bh366" data-title="C++随笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -312,148 +537,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/Lec1/" data-id="clno8pauu0006vfvvfi8ne5n5" data-title="Lecture 1: Introduction" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-计算机基础/计算机操作系统/6.S081/lec2 C in xv6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/" class="article-date">
-  <time class="dt-published" datetime="2023-10-08T04:00:00.000Z" itemprop="datePublished">2023-10-08</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>►<a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a>►<a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6-S081/">6.S081</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/">Lecture 2: C</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="按位运算符"><a href="#按位运算符" class="headerlink" title="按位运算符"></a>按位运算符</h2><h3 id="位与操作"><a href="#位与操作" class="headerlink" title="位与操作 &amp;"></a>位与操作 &amp;</h3><p>当两个位都为1时，结果才为1；否则为0。</p>
-        
-          <p class="article-more-link">
-            <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/lec2%20C%20in%20xv6/" data-id="clno8pauv0009vfvvbaj9360r" data-title="Lecture 2: C" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-项目/cpp/makeCppServer/2 多线程处理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/" class="article-date">
-  <time class="dt-published" datetime="2023-10-10T06:00:00.000Z" itemprop="datePublished">2023-10-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/cpp/">cpp</a>►<a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/">makeCppServer</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/">2. 使用多线程处理客户端</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="本章内容"><a href="#本章内容" class="headerlink" title="本章内容"></a>本章内容</h2><p><strong>●线程的基础知识与创建线程</strong><br><strong>●线程同步：锁、条件变量、信号量介绍</strong><br><strong>●实践：使用多线程处理客户端连接</strong>  </p>
-        
-          <p class="article-more-link">
-            <a href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/" data-id="clno8pauv000avfvvcpmv970i" data-title="2. 使用多线程处理客户端" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-编程语言/C++/基础/C++ notes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/" class="article-date">
-  <time class="dt-published" datetime="2023-10-11T03:00:00.000Z" itemprop="datePublished">2023-10-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>►<a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C++</a>►<a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">基础语法</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/">C++随笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>这里的知识没有归类和排序，只适用于查找某个特定的知识点，不适合拿来系统学习C++！</p>
-        
-          <p class="article-more-link">
-            <a href="/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/" data-id="clno8pauy0019vfvv4urx8vrg" data-title="C++随笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/Lec1/" data-id="clnsq3ahg000d2dvv0jrlbinc" data-title="Lecture 1: Introduction" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -517,6 +601,10 @@
       <ul>
         
           <li>
+            <a href="/2023/10/16/%E5%8A%9B%E6%89%A3/%E4%BA%8C%E5%8F%89%E6%A0%91/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/">27.移除元素</a>
           </li>
         
@@ -530,10 +618,6 @@
         
           <li>
             <a href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/">2. 使用多线程处理客户端</a>
-          </li>
-        
-          <li>
-            <a href="/2023/10/09/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/1%20a%20simple%20server/">1. 超简单的服务器</a>
           </li>
         
       </ul>
