@@ -4,19 +4,18 @@
   <meta charset="utf-8">
   
   
-  <title>27.移除元素 | Welch的成长笔录</title>
+  <title>Nand2tetris介绍 | Welch的成长笔录</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="题干力扣链接">
+  <meta name="description" content="文章内容… Nand到Tetris学习笔记1. Nand到Tetris的旅程介绍 Norm在上一个单元为我们描述了整个Nand到Tetris的旅程。 本课程的重点是构建一台名为 Hack 的计算机。 Hack计算机的主要组件： ROM (只读存储器) CPU (中央处理器) RAM (随机存取存储器) 其他多种芯片   完成计算机构建后，可以连接标准键盘和显示器来执行各种程序。  2. 课程大纲">
 <meta property="og:type" content="article">
-<meta property="og:title" content="27.移除元素">
-<meta property="og:url" content="http://example.com/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/index.html">
+<meta property="og:title" content="Nand2tetris介绍">
+<meta property="og:url" content="http://example.com/2023/10/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB/Nand2Tetris/%E7%AC%AC%E4%B8%80%E8%AF%BE%EF%BC%9A%E4%BB%8B%E7%BB%8D/index.html">
 <meta property="og:site_name" content="Welch的成长笔录">
-<meta property="og:description" content="题干力扣链接">
+<meta property="og:description" content="文章内容… Nand到Tetris学习笔记1. Nand到Tetris的旅程介绍 Norm在上一个单元为我们描述了整个Nand到Tetris的旅程。 本课程的重点是构建一台名为 Hack 的计算机。 Hack计算机的主要组件： ROM (只读存储器) CPU (中央处理器) RAM (随机存取存储器) 其他多种芯片   完成计算机构建后，可以连接标准键盘和显示器来执行各种程序。  2. 课程大纲">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-10-13T06:30:00.000Z">
-<meta property="article:modified_time" content="2023-10-13T06:43:25.004Z">
+<meta property="article:published_time" content="2023-10-07T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-18T09:48:02.965Z">
 <meta property="article:author" content="Yusen Chen">
-<meta property="article:tag" content="双指针法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Welch的成长笔录" type="application/atom+xml">
@@ -87,14 +86,14 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-力扣/数组/27 移除元素" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-计算机基础/计算机体系/Nand2Tetris/第一课：介绍" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" class="article-date">
-  <time class="dt-published" datetime="2023-10-13T06:30:00.000Z" itemprop="datePublished">2023-10-13</time>
+    <a href="/2023/10/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB/Nand2Tetris/%E7%AC%AC%E4%B8%80%E8%AF%BE%EF%BC%9A%E4%BB%8B%E7%BB%8D/" class="article-date">
+  <time class="dt-published" datetime="2023-10-07T04:00:00.000Z" itemprop="datePublished">2023-10-07</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>►<a class="article-category-link" href="/categories/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/">数组</a>
+    <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>►<a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB/">计算机体系</a>►<a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB/nand2tetris/">nand2tetris</a>
   </div>
 
   </div>
@@ -105,7 +104,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      27.移除元素
+      Nand2tetris介绍
     </h1>
   
 
@@ -113,47 +112,91 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="题干"><a href="#题干" class="headerlink" title="题干"></a>题干</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-element/">力扣链接</a></p>
-<span id="more"></span>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
-<li><strong>双指针技巧</strong>：使用两个指针，一个快指针 <code>fast</code> 和一个慢指针 <code>slow</code>。<code>fast</code> 用于遍历整个数组，而 <code>slow</code> 用于指示新数组的位置。</li>
-<li>当 <code>fast</code> 指向的元素不等于给定的 <code>val</code> 时，我们将该元素复制到 <code>slow</code> 指向的位置，并将 <code>slow</code> 向前移动一步。</li>
-<li>无论 <code>fast</code> 指向的元素的值如何，我们都将 <code>fast</code> 向前移动一步。</li>
-<li>当 <code>fast</code> 遍历完整个数组后，<code>slow</code> 的位置就是新数组的长度。</li>
+        <p>文章内容…</p>
+<h2 id="Nand到Tetris学习笔记"><a href="#Nand到Tetris学习笔记" class="headerlink" title="Nand到Tetris学习笔记"></a>Nand到Tetris学习笔记</h2><h3 id="1-Nand到Tetris的旅程介绍"><a href="#1-Nand到Tetris的旅程介绍" class="headerlink" title="1. Nand到Tetris的旅程介绍"></a>1. Nand到Tetris的旅程介绍</h3><ul>
+<li>Norm在上一个单元为我们描述了整个Nand到Tetris的旅程。</li>
+<li>本课程的重点是构建一台名为 <strong>Hack</strong> 的计算机。</li>
+<li><strong>Hack计算机的主要组件</strong>：<ul>
+<li>ROM (只读存储器)</li>
+<li>CPU (中央处理器)</li>
+<li>RAM (随机存取存储器)</li>
+<li>其他多种芯片</li>
+</ul>
+</li>
+<li>完成计算机构建后，可以连接标准键盘和显示器来执行各种程序。</li>
+</ul>
+<h3 id="2-课程大纲"><a href="#2-课程大纲" class="headerlink" title="2. 课程大纲"></a>2. 课程大纲</h3><ul>
+<li>课程的大致流程：从程序设计开始，编写程序，编译，进一步翻译为机器语言，然后加载到我们的计算机中。</li>
+<li>该计算机将使用我们构建的各种芯片，这些芯片基于基本的逻辑门。</li>
+<li>我们实际上是在硬件平台上构建了一个软件层次结构。</li>
+<li>该旅程被分为两部分：Nand到Tetris第一部分和稍后提供的Nand到Tetris第二部分。</li>
+<li>在这门课程中，我们只关注硬件，从硬件、电子和逻辑门的非常低级别开始，采用自下而上的方法。</li>
+</ul>
+<h3 id="3-六个项目概述"><a href="#3-六个项目概述" class="headerlink" title="3. 六个项目概述"></a>3. 六个项目概述</h3><ul>
+<li>第一周：构建一些基本的逻辑门，总共15个。</li>
+<li>第二周：构建算术逻辑单元（ALU），这是稍后要构建的CPU的核心部分。</li>
+<li>第三周：构建内存系统，从寄存器开始，一直到RAM和ROM单元。</li>
+<li>第四周：在构建计算机之前，我们将使用Hack机器语言编写一些程序，以获得对计算机功能的感觉。</li>
+<li>第五周：使用到目前为止构建的所有芯片来设计实际的计算机。</li>
+<li>最后一周：为Hack机器语言引入一个汇编程序，并用两种不同的方式开发它。</li>
+</ul>
+<h3 id="4-课程先决条件"><a href="#4-课程先决条件" class="headerlink" title="4. 课程先决条件"></a>4. 课程先决条件</h3><ul>
+<li>不需要有计算机科学、工程或数学的先前知识。</li>
+<li>所需的所有知识都将在课程中提供。</li>
+<li>这是一个自包含的课程，在七周的精彩项目中，你将学到很多知识。</li>
+</ul>
+<p>最后，这个单元描述了从Nand到Hack计算机的旅程，下一个单元我们将概述从Hack计算机到Tetris的旅程。</p>
+<p>好的，我会按照同样的方式为你处理这个新的文件并整理成学习笔记。首先，我会读取并查看文件内容。</p>
+<p>从新提供的字幕内容中，我将再次提炼重要信息并为你制作中文学习笔记。</p>
+<h2 id="Nand到Tetris学习笔记（续）"><a href="#Nand到Tetris学习笔记（续）" class="headerlink" title="Nand到Tetris学习笔记（续）"></a>Nand到Tetris学习笔记（续）</h2><h3 id="5-Nand到Tetris第二部分介绍"><a href="#5-Nand到Tetris第二部分介绍" class="headerlink" title="5. Nand到Tetris第二部分介绍"></a>5. Nand到Tetris第二部分介绍</h3><ul>
+<li>在课程的第一部分中，从一个简单的Nand门开始，构建到可以运行任何程序（例如Tetris）的工作计算机系统。</li>
+<li>第二部分的问题是计算机上进行的编程类型。<ul>
+<li>本课程结束时，我们将构建一种可以在其上运行的计算机语言，但这是一个非常低级的汇编语言。</li>
+<li>汇编语言看起来并不友好，与编程101课程中使用的不同。</li>
+<li>大多数程序员希望使用高级语言进行工作，这样的语言包括丰富的语法、循环、数据类型、方法、抽象等。</li>
+</ul>
+</li>
+<li>第二部分将涉及软件层次结构，我们将：<ul>
+<li>提供一个高级语言，称为Jack。</li>
+<li>使用几个抽象级别为其编写编译器。</li>
+<li>构建标准库和迷你操作系统，为程序员提供所有高级服务。</li>
+</ul>
+</li>
+<li>一旦拥有这些，你就可以正常使用高级语言作为编程入门课程的起点。</li>
+<li>第二部分尚未提供，但已经在网站和课程书中准备好了。</li>
+</ul>
+<h3 id="6-下一步"><a href="#6-下一步" class="headerlink" title="6. 下一步"></a>6. 下一步</h3><ul>
+<li>下一个单元将简要介绍第一个或实际上是第零个项目。</li>
+<li>该项目旨在确保你能够找到网站，知道如何为Coursera提交练习。</li>
+<li>完成后，下一周我们将开始构建计算机。</li>
+</ul>
+<h2 id="实验准备"><a href="#实验准备" class="headerlink" title="实验准备"></a>实验准备</h2><ol>
+<li>下载提供的软件包</li>
+<li>安装Java</li>
 </ol>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeElement</span><span class="params">(std::vector&lt;<span class="type">int</span>&gt;&amp; v, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> slow = <span class="number">0</span>;  <span class="comment">// 初始化慢指针</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> fast = <span class="number">0</span>; fast &lt; v.<span class="built_in">size</span>(); fast++) &#123;  <span class="comment">// 使用快指针遍历数组</span></span><br><span class="line">            <span class="keyword">if</span> (v[fast] != val) &#123;  <span class="comment">// 如果快指针指向的元素不等于 val</span></span><br><span class="line">                v[slow] = v[fast];  <span class="comment">// 将该元素复制到慢指针的位置</span></span><br><span class="line">                ++slow;  <span class="comment">// 将慢指针向前移动一步</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;  <span class="comment">// 返回新数组的长度</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<hr>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" data-id="clnvkn1iw0000t6vvctiw2p35" data-title="27.移除元素" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB/Nand2Tetris/%E7%AC%AC%E4%B8%80%E8%AF%BE%EF%BC%9A%E4%BB%8B%E7%BB%8D/" data-id="clnvkn1j3000at6vv8ae15bt5" data-title="Nand2tetris介绍" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95/" rel="tag">双指针法</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2023/10/16/%E5%8A%9B%E6%89%A3/%E4%BA%8C%E5%8F%89%E6%A0%91/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2023/10/07/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6.S081/Lec1/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          (no title)
+          Lecture 1: Introduction
         
       </div>
     </a>
   
-  
-    <a href="/2023/10/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%A5%BF%E7%93%9C%E4%B9%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E7%BB%AA%E8%AE%BA/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">第一章：绪论</div>
-    </a>
   
 </nav>
 
