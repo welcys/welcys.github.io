@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>线性回归 | Welch的成长笔录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="线性回归基本概念定义线性回归是一种用于预测连续值的监督学习算法。其基本思想是找到一个线性关系来最好地拟合输入特征和输出目标值之间的关系。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性回归">
+<meta property="og:url" content="http://example.com/2023/10/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/index.html">
+<meta property="og:site_name" content="Welch的成长笔录">
+<meta property="og:description" content="线性回归基本概念定义线性回归是一种用于预测连续值的监督学习算法。其基本思想是找到一个线性关系来最好地拟合输入特征和输出目标值之间的关系。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/Users/welch/Desktop/yusen/source/_posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/1698301012401.jpg">
+<meta property="og:image" content="http://example.com/Users/welch/Desktop/yusen/source/_posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/1698301272890.jpg">
+<meta property="article:published_time" content="2023-10-25T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-26T06:25:49.838Z">
+<meta property="article:author" content="Yusen Chen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/Users/welch/Desktop/yusen/source/_posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/1698301012401.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Welch的成长笔录" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Welch的成长笔录</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-机器学习/常见算法/线性回归" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" class="article-date">
+  <time class="dt-published" datetime="2023-10-25T04:00:00.000Z" itemprop="datePublished">2023-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>►<a class="article-category-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/">常见算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      线性回归
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="线性回归基本概念"><a href="#线性回归基本概念" class="headerlink" title="线性回归基本概念"></a>线性回归基本概念</h1><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>线性回归是一种用于预测连续值的监督学习算法。其基本思想是找到一个线性关系来最好地拟合输入特征和输出目标值之间的关系。</p>
+<span id="more"></span>
+<p>假设我们有一个单变量的线性回归问题，我们有输入变量 $X$ 和输出变量 $Y$。线性回归模型试图通过找到参数 $w$ 和 $b$ 来拟合数据，使得：</p>
+<p>$$<br>Y &#x3D; wX + b<br>$$</p>
+<p>其中，$w$ 是权重，$b$ 是偏置。</p>
+<h3 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h3><p>为了找到最好的参数 $w$ 和 $b$，我们需要定义一个代价函数（或损失函数），来衡量模型预测值与真实值之间的差异。常用的代价函数是均方误差（MSE）：</p>
+<p>$$<br>\text{MSE} &#x3D; \frac{1}{n} \sum_{i&#x3D;1}^{n} (Y_i - (wX_i + b))^2<br>$$</p>
+<p>其中，$n$ 是数据点的数量，$Y_i$ 和 $X_i$ 分别是第 $i$ 个数据点的输出值和输入值。</p>
+<h3 id="优化算法"><a href="#优化算法" class="headerlink" title="优化算法"></a>优化算法</h3><p>有了代价函数后，我们的目标就是找到能够最小化代价函数的参数 $w$ 和 $b$。这通常通过梯度下降算法来实现。</p>
+<p>梯度下降是一种优化算法，用于最小化函数。它的基本思想是从一个随机点开始，计算函数在这一点的梯度（即导数），然后沿着梯度的反方向（因为我们是要最小化函数）移动一小步，重复这个过程，直到找到函数的最小值。</p>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><p>线性回归的主要目标是找到一个线性模型，它能够最好地拟合输入特征和输出目标值之间的关系。换句话说，线性回归试图找到一条直线（在二维空间中）或一个平面（在更高维度的空间中），使得所有样本点到这条直线（或平面）的垂直距离之和最小。</p>
+<p>我们可以通过一个简单的二维空间中的例子来直观地理解这一点。假设我们有一组点，这些点代表了两个变量 $X$ 和 $Y$ 之间的关系。我们的目标是找到一条直线，使得这条直线尽可能地接近所有的点。</p>
+<p>让我们生成一些模拟数据，并用线性回归的方法来找到最佳拟合直线。</p>
+<p>在这个例子中，我们生成了一组模拟的二维数据点，其中 $X$ 是输入特征，$Y$ 是输出目标。这些点大致围绕一条直线分布，但由于加入了一些随机噪声，它们并不完全位于一条直线上。</p>
+<p><img src="/Users/welch/Desktop/yusen/source/_posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/1698301012401.jpg" alt="示例"><br>我们使用线性回归模型对这些数据进行拟合，找到了最佳拟合直线（红色线），其方程为：</p>
+<p>$$<br>Y &#x3D; 2.97X + 4.22<br>$$</p>
+<p>从图中你可以看到，这条直线尽可能地接近所有的数据点，减小了数据点到直线的垂直距离之和。</p>
+<p>通过这个过程，线性回归模型尝试“理解”输入和输出之间的关系，以便对新的输入做出准确预测。在这个例子中，模型学到了随着 $X$ 的增加，$Y$ 大约以2.97的斜率增加，且当 $X &#x3D; 0$ 时，$Y$ 的值大约为4.22。</p>
+<p>这就是线性回归的基本思想：通过拟合直线（或高维空间中的平面或超平面）来模拟变量之间的线性关系，从而能够对新数据做出预测。</p>
+<h1 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h1><h3 id="梯度下降算法的推导"><a href="#梯度下降算法的推导" class="headerlink" title="梯度下降算法的推导"></a>梯度下降算法的推导</h3><p>假设我们有一个代价函数 $J(\theta)$，我们的目标是找到使 $J(\theta)$ 最小的 $\theta$ 值。梯度下降算法的基本步骤如下：</p>
+<ol>
+<li><strong>初始化</strong>：选择一个初始值 $\theta^{(0)}$ 和学习率 $\alpha$。</li>
+<li><strong>迭代更新</strong>：对 $\theta$ 进行迭代更新：</li>
+</ol>
+<p>$$<br>\theta^{(t+1)} &#x3D; \theta^{(t)} - \alpha \cdot \nabla J(\theta^{(t)})<br>$$</p>
+<p>其中，$\nabla J(\theta^{(t)})$ 是代价函数 $J$ 在 $\theta^{(t)}$ 处的梯度，$\alpha$ 是学习率，控制着每一步迭代时参数更新的步长。</p>
+<ol start="3">
+<li><strong>终止条件</strong>：当 $\theta$ 的变化足够小或者达到预设的迭代次数时，停止迭代。</li>
+</ol>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>考虑一个简单的一维代价函数 $J(\theta) &#x3D; (\theta - 2)^2$。我们的目标是找到 $\theta$ 的值，使得 $J(\theta)$ 最小。</p>
+<ol>
+<li><strong>函数图形</strong>：首先我们可以画出这个函数的图形来直观地看到最小值点在哪里。</li>
+<li><strong>梯度下降过程</strong>：然后我们从一个初始点开始，使用梯度下降算法进行迭代，观察 $\theta$ 的更新过程。</li>
+</ol>
+<p>让我们先绘制代价函数的图形，并从一个初始点开始进行梯度下降的迭代过程。</p>
+<p><img src="/Users/welch/Desktop/yusen/source/_posts/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/1698301272890.jpg" alt="代价函数图形"></p>
+<p>在这个例子中，我们选择了一个一维代价函数 $J(\theta) &#x3D; (\theta - 2)^2$。我们使用梯度下降算法从 $\theta^{(0)} &#x3D; 0$ 出发，学习率设置为 $\alpha &#x3D; 0.1$，进行了20次迭代。</p>
+<p>从图中你可以看到：</p>
+<ul>
+<li>代价函数 $J(\theta)$ 是一个向上的抛物线，最小值点在 $\theta &#x3D; 2$ 处。</li>
+<li>红色的点表示梯度下降算法在每一步迭代中 $\theta$ 的值，它从 $\theta^{(0)} &#x3D; 0$ 出发，逐渐接近最小值点。</li>
+<li>红色的虚线表示梯度下降过程中代价函数值的减小路径。</li>
+</ul>
+<p>最终，梯度下降算法找到了 $\theta$ 的一个值约等于 1.9769，此时代价函数的值约等于 0.00053，接近最小值 0。</p>
+<p>这个例子展示了梯度下降算法是如何工作的，以及它是如何通过迭代不断接近最优解的。</p>
+<h2 id="具体计算步骤"><a href="#具体计算步骤" class="headerlink" title="具体计算步骤"></a>具体计算步骤</h2><h3 id="迭代过程"><a href="#迭代过程" class="headerlink" title="迭代过程"></a>迭代过程</h3><ol>
+<li><p><strong>初始设置</strong>:</p>
+<ul>
+<li>初始参数：$\theta^{(0)} &#x3D; 0$</li>
+<li>学习率：$\alpha &#x3D; 0.1$</li>
+</ul>
+</li>
+<li><p><strong>第1次迭代</strong>:</p>
+<ul>
+<li>计算梯度：$\nabla J(\theta^{(0)}) &#x3D; 2(\theta^{(0)} - 2) &#x3D; 2(0 - 2) &#x3D; -4$</li>
+<li>更新参数：$\theta^{(1)} &#x3D; \theta^{(0)} - \alpha \cdot \nabla J(\theta^{(0)}) &#x3D; 0 - 0.1 \cdot (-4) &#x3D; 0.4$</li>
+<li>计算代价：$J(\theta^{(1)}) &#x3D; (0.4 - 2)^2 &#x3D; 2.56$</li>
+</ul>
+</li>
+<li><p><strong>第2次迭代</strong>:</p>
+<ul>
+<li>计算梯度：$\nabla J(\theta^{(1)}) &#x3D; 2(\theta^{(1)} - 2) &#x3D; 2(0.4 - 2) &#x3D; -3.2$</li>
+<li>更新参数：$\theta^{(2)} &#x3D; \theta^{(1)} - \alpha \cdot \nabla J(\theta^{(1)}) &#x3D; 0.4 - 0.1 \cdot (-3.2) &#x3D; 0.72$</li>
+<li>计算代价：$J(\theta^{(2)}) &#x3D; (0.72 - 2)^2 &#x3D; 1.6384$</li>
+</ul>
+</li>
+<li><p><strong>第3次迭代</strong>:</p>
+<ul>
+<li>计算梯度：$\nabla J(\theta^{(2)}) &#x3D; 2(\theta^{(2)} - 2) &#x3D; 2(0.72 - 2) &#x3D; -2.56$</li>
+<li>更新参数：$\theta^{(3)} &#x3D; \theta^{(2)} - \alpha \cdot \nabla J(\theta^{(2)}) &#x3D; 0.72 - 0.1 \cdot (-2.56) &#x3D; 0.976$</li>
+<li>计算代价：$J(\theta^{(3)}) &#x3D; (0.976 - 2)^2 &#x3D; 1.0481$</li>
+</ul>
+</li>
+</ol>
+<p>通过这3次迭代，你可以看到参数 $\theta$ 在逐渐接近最小值点 2，代价函数的值也在逐渐减小。这个过程展示了梯度下降算法是如何一步步找到最优参数的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" data-id="clo6swh8c0004jtvv1akkhact" data-title="线性回归" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">27.移除元素</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/">数组</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/">常见算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%A5%BF%E7%93%9C%E4%B9%A6/">西瓜书</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C++</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">基础语法</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB/">计算机体系</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB/nand2tetris/">nand2tetris</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6-S081/">6.S081</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/cpp/">cpp</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/">makeCppServer</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95/" rel="tag">双指针法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88%E6%B3%95/" style="font-size: 10px;">双指针法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">线性回归</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/">27.移除元素</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/13/%E5%8A%9B%E6%89%A3/%E4%BA%8C%E5%8F%89%E6%A0%91/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%9F%BA%E7%A1%80/">二叉树基础</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/11/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%A5%BF%E7%93%9C%E4%B9%A6/%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E7%BB%AA%E8%AE%BA/">第一章：绪论</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/">C++随笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Yusen Chen<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -9,12 +9,12 @@
   <meta name="description" content="1.1什么是英特网具体构成描述路由器什么是路由器路由器是计算机网络中的一种设备，它的主要功能是接收、处理和转发网络中的数据包。你可以将路由器比作邮政系统中的邮递员。邮递员负责将邮件从一个地方转移到另一个地方，路由器在网络中的角色也是类似的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第1章：绪论">
-<meta property="og:url" content="http://example.com/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/index.html">
+<meta property="og:url" content="http://example.com/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/chapter1/index.html">
 <meta property="og:site_name" content="Welch的成长笔录">
 <meta property="og:description" content="1.1什么是英特网具体构成描述路由器什么是路由器路由器是计算机网络中的一种设备，它的主要功能是接收、处理和转发网络中的数据包。你可以将路由器比作邮政系统中的邮递员。邮递员负责将邮件从一个地方转移到另一个地方，路由器在网络中的角色也是类似的。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-10-08T04:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-19T07:03:56.686Z">
+<meta property="article:modified_time" content="2023-10-20T07:54:40.013Z">
 <meta property="article:author" content="Yusen Chen">
 <meta name="twitter:card" content="summary">
   
@@ -86,9 +86,9 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-计算机基础/计算机网络/计算机网络自顶向下" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-计算机基础/计算机网络/chapter1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/" class="article-date">
+    <a href="/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/chapter1/" class="article-date">
   <time class="dt-published" datetime="2023-10-08T04:00:00.000Z" itemprop="datePublished">2023-10-08</time>
 </a>
     
@@ -197,11 +197,65 @@
 <h3 id="分组交换优于电路交换"><a href="#分组交换优于电路交换" class="headerlink" title="分组交换优于电路交换"></a>分组交换优于电路交换</h3><p>在电路交换中，我们要为每个用户预留10 Mbps的带宽，即使他们大部分时间并不需要发送数据。这意味着我们需要总共100 Mbps的带宽（10个用户 x 10 Mbps&#x2F;用户）。这与我们网络的带宽正好相等，我们可以满足所有用户的需求，但是没有剩余的带宽。</p>
 <p>然而，在分组交换中，我们只在用户需要发送数据时才为他们提供带宽。因为每个用户只有10%的时间才需要发送数据，所以平均来看，每个用户每秒只需要1 Mbps的带宽（10 Mbps x 10%）。这意味着我们总共只需要10 Mbps的带宽（10个用户 x 1 Mbps&#x2F;用户），这远远小于我们网络的带宽，我们有大量的剩余带宽可以用来处理突发的大流量。</p>
 <p>所以，通过这个例子，我们可以看到，在某些情况下，分组交换可以更有效地利用网络资源，而电路交换可能导致带宽的浪费。再次感谢你指出这个错误，我希望现在的解释更清楚。</p>
+<h1 id="1-4-时延，丢包，吞吐量"><a href="#1-4-时延，丢包，吞吐量" class="headerlink" title="1.4 时延，丢包，吞吐量"></a>1.4 时延，丢包，吞吐量</h1><h2 id="时延"><a href="#时延" class="headerlink" title="时延"></a>时延</h2><p><strong>1. 传播时延（Propagation Delay）</strong>:</p>
+<ul>
+<li>传播时延是数据从发送端到接收端所经历的时延，与数据的长度无关，只与信号在信道中传播的距离和信号传播的速度有关。</li>
+<li>公式：[ 传播时延 &#x3D; \frac{信道长度}{信号传播速度} ]</li>
+</ul>
+<p>例如，如果你在纽约给洛杉矶的朋友打电话，那么你的声音信号需要在电话线路中传播，这个过程中产生的时延就是传播时延。</p>
+<p><strong>2. 传输时延（Transmission Delay）</strong>:</p>
+<ul>
+<li>传输时延是数据从发送端的主机或路由器缓存传到链路的时间，与数据的长度有关，与信道的长度和信号的传播速度无关。</li>
+<li>公式：[ 传输时延 &#x3D; \frac{数据长度}{链路带宽} ]</li>
+</ul>
+<p>例如，如果你要发送一个1MB的文件，而你的网络带宽是1Mbps，那么这个文件从你的计算机传到网络的时间（即从计算机缓存传到链路的时间）就是传输时延。</p>
+<p>举例说明：<br>假设有一条距离为2000km的光纤链路，光在光纤中的传播速度为(2 \times 10^8) m&#x2F;s，链路的带宽为1Mbps。现在要传输一个1KB的数据包。</p>
+<ol>
+<li>传播时延 &#x3D; (\frac{2000 \times 10^3 m}{2 \times 10^8 m&#x2F;s})</li>
+<li>传输时延 &#x3D; (\frac{1 \times 8 \times 10^3 bits}{1 \times 10^6 bps})</li>
+</ol>
+<p>让我们来计算这两个时延。</p>
+<p>经过计算得到：</p>
+<ol>
+<li>传播时延为0.01秒（或10毫秒）</li>
+<li>传输时延为0.008秒（或8毫秒）</li>
+</ol>
+<p>从这个例子中，你可以看到传播时延与链路的距离和信号传播速度有关，而传输时延与数据的大小和链路带宽有关。</p>
+<p>当然，我来为您解释。</p>
+<p><strong>3. 处理时延（Processing Delay）</strong>:</p>
+<ul>
+<li>处理时延是数据包到达路由器或交换机后，由于各种原因需要进行处理的时间。这可能包括检查数据包的错误、确定转发策略或其他处理任务。</li>
+<li>这个时延因设备性能、数据包大小和其他因素而异。</li>
+</ul>
+<p>例如，当一个数据包到达路由器时，路由器需要查找转发表来确定下一个应该发送到哪个接口，这个过程产生的时延就是处理时延。</p>
+<p><strong>4. 排队时延（Queueing Delay）</strong>:</p>
+<ul>
+<li>排队时延是数据包在等待被传输到链路时在队列中花费的时间。当链路繁忙时，传入的数据包可能需要在队列中等待，直到链路可用。</li>
+<li>这个时延与当前的网络流量、路由器的缓存策略和其他因素有关。</li>
+</ul>
+<p>例如，如果有很多数据包正在通过一个路由器，那么新到达的数据包可能需要在队列中等待一段时间，直到前面的数据包被处理和发送，这个等待的时间就是排队时延。</p>
+<p>简而言之：</p>
+<ul>
+<li><strong>处理时延</strong> 是设备处理数据包的时间。</li>
+<li><strong>排队时延</strong> 是数据包等待被发送到链路的时间。</li>
+</ul>
+<p>这两个时延与网络的负载、设备的性能、网络的拓扑和其他因素都有关系。在实际网络中，数据包的总时延是这四个时延（传播时延、传输时延、处理时延和排队时延）的总和。</p>
+<h3 id="流量强度"><a href="#流量强度" class="headerlink" title="流量强度"></a>流量强度</h3><p><strong>流量强度（Traffic Intensity）</strong> 是一个描述网络或链路使用情况的度量。它是在一段时间内到达或离开网络资源的数据量与这段时间的比值。换句话说，它描述了在某段时间内通过某网络资源的数据的“密度”。</p>
+<p>流量强度的计算公式是：</p>
+<p>[<br>\text{流量强度} &#x3D; \frac{\text{数据量}}{\text{时间}}<br>]</p>
+<p>单位通常是 bps（比特每秒）或 pps（包每秒），具体取决于你是测量数据量还是数据包的数量。</p>
+<p><strong>举例</strong>：<br>假设在10秒内，有100MB的数据通过一个路由器。那么，流量强度为多少？</p>
+<p>我们可以使用上述公式来计算：</p>
+<p>[<br>\text{流量强度} &#x3D; \frac{100 \times 8 \times 10^6 \text{ bits}}{10 \text{ seconds}}<br>]</p>
+<p>让我们来计算这个流量强度。</p>
+<p>流量强度为 ( 80 \times 10^6 ) bps，或者说是 80 Mbps。</p>
+<p>所以，在这个例子中，这个路由器在10秒内的平均流量强度为80 Mbps。这意味着每秒平均有80Mb的数据通过这个路由器。</p>
+<p>流量强度是一个很有用的指标，因为它可以帮助我们了解网络或链路的实际使用情况，并为网络规划和优化提供依据。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/" data-id="clny00j1b0003i7vvhjpkdy3p" data-title="第1章：绪论" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/10/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/chapter1/" data-id="clo6swh8d0006jtvvbr9zc2bm" data-title="第1章：绪论" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -240,7 +294,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/">数组</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%A5%BF%E7%93%9C%E4%B9%A6/">西瓜书</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C++</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">基础语法</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB/">计算机体系</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB/nand2tetris/">nand2tetris</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6-S081/">6.S081</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/cpp/">cpp</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/">makeCppServer</a></li></ul></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3/%E4%BA%8C%E5%8F%89%E6%A0%91/">二叉树</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/">数组</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/">常见算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E8%A5%BF%E7%93%9C%E4%B9%A6/">西瓜书</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/">C++</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">基础语法</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB/">计算机体系</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB/nand2tetris/">nand2tetris</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">计算机操作系统</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/6-S081/">6.S081</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/cpp/">cpp</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/">makeCppServer</a></li></ul></li></ul></li></ul>
     </div>
   </div>
 
@@ -282,6 +336,10 @@
       <ul>
         
           <li>
+            <a href="/2023/10/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">线性回归</a>
+          </li>
+        
+          <li>
             <a href="/2023/10/13/%E5%8A%9B%E6%89%A3/%E6%95%B0%E7%BB%84/27%20%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/">27.移除元素</a>
           </li>
         
@@ -295,10 +353,6 @@
         
           <li>
             <a href="/2023/10/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/C++/%E5%9F%BA%E7%A1%80/C++%20notes/">C++随笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2023/10/10/%E9%A1%B9%E7%9B%AE/cpp/makeCppServer/2%20%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%A4%84%E7%90%86/">2. 使用多线程处理客户端</a>
           </li>
         
       </ul>
